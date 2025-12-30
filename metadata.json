@@ -1,0 +1,7 @@
+{
+  "name": "Vibe Hub",
+  "description": "A professional directory for vibe-coded applications, featuring a semantic AI search and a verified submission portal.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
