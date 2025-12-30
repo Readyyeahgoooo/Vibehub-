@@ -1,7 +1,8 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Header from './components/Header';
 import SubmitForm from './components/SubmitForm';
+import AppDetailPage from './components/AppDetailPage';
 import { APPS_DATA, TRANSLATIONS } from './constants';
 import { VibeApp, AppCategory, SearchResult, Language, SortKey, SortDirection } from './types';
 import { semanticSearch } from './services/openrouterService';
@@ -15,9 +16,38 @@ const App: React.FC = () => {
   const [searchResults, setSearchResults] = useState<SearchResult[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [selectedApp, setSelectedApp] = useState<VibeApp | null>(null);
   const [sortConfig, setSortConfig] = useState<{ key: SortKey; direction: SortDirection }>({ key: 'name', direction: 'asc' });
 
   const t = TRANSLATIONS[lang];
+
+  // Handle URL parameters for direct app links
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const appId = params.get('app');
+    if (appId) {
+      const app = APPS_DATA.find(a => a.id === appId);
+      if (app) {
+        setSelectedApp(app);
+      }
+    }
+  }, []);
+
+  // Update URL when app is selected
+  const handleAppClick = (app: VibeApp) => {
+    setSelectedApp(app);
+    const url = new URL(window.location.href);
+    url.searchParams.set('app', app.id);
+    window.history.pushState({}, '', url.toString());
+  };
+
+  // Clear URL parameter when closing detail page
+  const handleCloseDetail = () => {
+    setSelectedApp(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('app');
+    window.history.pushState({}, '', url.toString());
+  };
 
   const handleSort = (key: SortKey) => {
     setSortConfig(prev => ({
@@ -202,7 +232,12 @@ const App: React.FC = () => {
                     filteredApps.map((app) => (
                       <tr key={app.id} className="github-table-row transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-bold text-blue-600 hover:underline cursor-pointer">{app.name}</div>
+                          <button
+                            onClick={() => handleAppClick(app)}
+                            className="text-sm font-bold text-blue-600 hover:underline cursor-pointer text-left"
+                          >
+                            {app.name}
+                          </button>
                         </td>
                         <td className="px-6 py-4">
                           <div className="text-sm text-gray-800 leading-relaxed max-w-xs md:max-w-md">
@@ -266,6 +301,7 @@ const App: React.FC = () => {
       </main>
 
       {showSubmitModal && <SubmitForm onClose={() => setShowSubmitModal(false)} lang={lang} />}
+      {selectedApp && <AppDetailPage app={selectedApp} lang={lang} onClose={handleCloseDetail} />}
     </div>
   );
 };
