@@ -62,7 +62,9 @@ export async function verifyScreenshot(
     });
 
     if (!response.ok) {
-      throw new Error(`Verification API error: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      const errorMessage = errorData.error || `API error: ${response.status}`;
+      throw new Error(errorMessage);
     }
 
     const result = await response.json();
@@ -107,7 +109,9 @@ export async function classifyApp(
     });
 
     if (!response.ok) {
-      throw new Error(`Classification API error: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      const errorMessage = errorData.error || `API error: ${response.status}`;
+      throw new Error(errorMessage);
     }
 
     const result = await response.json();
