@@ -7,4 +7,6 @@ python-dotenv
 openai
 pillow
 huggingface_hub
+gradio
+
 
