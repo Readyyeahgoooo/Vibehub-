@@ -1,3 +1,14 @@
+---
+title: VibeFrame
+emoji: 🎵
+colorFrom: purple
+colorTo: pink
+sdk: gradio
+sdk_version: 4.19.2
+app_file: app_gradio.py
+pinned: false
+---
+
 # VibeFrame: Zero-Cost AI Music Video Generator
 
 A Python tool to create stylized music videos using audio beat detection and free AI generation APIs.
