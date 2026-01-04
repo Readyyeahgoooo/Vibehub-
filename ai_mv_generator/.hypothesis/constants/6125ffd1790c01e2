@@ -1,0 +1,4 @@
+# file: /Users/puiyuenwong/Desktop/Real uni (1)/PCLL 2023 /Haldanes demo try /Album /Apps /Vibehub-/ai_mv_generator/vibeframe/video_compositor.py
+# hypothesis_version: 6.141.1
+
+[0.1, 0.5, 1024, '-b:a', '-c', '-c:a', '-c:v', '-crf', '-f', '-i', '-preset', '-print_format', '-r', '-safe', '-show_format', '-show_streams', '-v', '-vf', '-y', '.mp4', '0', '0/1', '128k', '_inputs.txt', 'aac', 'audio', 'audio_codec', 'channels', 'codec_name', 'codec_type', 'concat', 'copy', 'crf', 'cut', 'dissolve', 'draft', 'duration', 'fade', 'ffmpeg', 'ffprobe', 'format', 'format_name', 'fps', 'height', 'high', 'json', 'libvpx-vp9', 'libx264', 'libx265', 'loop', 'maximum', 'medium', 'pix_fmt', 'pixel_format', 'preset', 'quiet', 'r_frame_rate', 'sample_rate', 'size', 'size_bytes', 'slow', 'standard', 'streams', 'stretch', 'temp-audio.m4a', 'trim', 'ultrafast', 'unknown', 'veryslow', 'video', 'video_codec', 'w', 'width']

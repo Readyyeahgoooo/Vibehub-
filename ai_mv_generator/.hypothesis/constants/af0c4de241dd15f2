@@ -1,0 +1,4 @@
+# file: /Users/puiyuenwong/Desktop/Real uni (1)/PCLL 2023 /Haldanes demo try /Album /Apps /Vibehub-/ai_mv_generator/vibeframe/audio_analyzer.py
+# hypothesis_version: 6.141.1
+
+[0.0, 0.3, 0.5, 0.7, 0.8, 0.9, 1.0, 4.0, 120.0, 100, 512, 'affinity', 'audio_path', 'auto', 'beats', 'chorus', 'chroma', 'confidence', 'cosine', 'duration', 'end_time', 'energy', 'frames', 'intro', 'label', 'loaded', 'mfcc', 'not_loaded', 'num_beats', 'outro', 'sample_rate', 'spectral_centroid', 'start_time', 'status', 'structure', 'tempo', 'verse', 'zero_crossing_rate']
